@@ -5,7 +5,7 @@ Now working following ports:
 - `mail/p5-Mail-Milter-Authentication`
   - `devel/p5-Lock-File`
   - `mail/p5-Mail-BIMI`
-    - www/p5-HTTP-Tiny-Paranoid`
+    - `www/p5-HTTP-Tiny-Paranoid`
   - `mail/p5-Mail-DataFeed-Abusix`
   - `net-mgmt/p5-Prometheus-Tiny-Shared`
     - `devel/p5-Hash-SharedMem`
