@@ -1,0 +1,5 @@
+lockfile() is a perlfunc flock wrapper. The lock is autotamically
+released as soon as the assotiated object is no longer referenced.
+
+lockfile_multi() makes non-blocking lockfile calls for multiple
+files and throws and exception if all are locked.
