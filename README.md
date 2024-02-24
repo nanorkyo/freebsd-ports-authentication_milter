@@ -16,6 +16,7 @@ Now working following ports:
 - `portfmt` happy.
 - `portclippy` happy.
 - `poudorie testport mail/p5-Mail-Milter-Authentication` on FreeBSD/amd64 happy.
+- rc script ready.
 
 # TODO
 - `*/*`: COMMENT and pkg-descr are not matched correctly.
@@ -24,7 +25,6 @@ Now working following ports:
 - `net-mgmt/p5-Prometheus-Tiny-Shared`: `make test` mostly work, but not all, becase a lack of some ports.
 - `net-mgmt/p5-Prometheus-Tiny`: `make test` not work, becase a lack of some ports.
 - `mail/p5-Mail-Milter-Authentication`:
-  - no rc script.
   - not PREFIX clean.
   - not comfort a sample configuration file.
   - no pkg-messages for 1st setup.

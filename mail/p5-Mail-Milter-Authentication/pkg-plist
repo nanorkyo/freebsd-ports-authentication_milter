@@ -4,6 +4,7 @@ bin/authentication_milter_log
 bin/authentication_milter_client
 etc/mail/authentication_milter.json
 etc/mail/mail-dmarc.ini
+etc/rc.d/authentication_milter
 %%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/authentication_milter.json
 %%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/authentication_milter.init
 %%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/mail-dmarc.ini

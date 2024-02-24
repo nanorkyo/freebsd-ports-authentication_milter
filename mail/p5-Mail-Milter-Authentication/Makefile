@@ -49,6 +49,7 @@ TEST_DEPENDS=	p5-Crypt-OpenSSL-RSA>0:security/p5-Crypt-OpenSSL-RSA \
 
 USES=		perl5
 USE_PERL5=	configure
+USE_RC_SUBR=	authentication_milter
 
 TEST_ENV=	TEST_AUTHOR=1 AUTHOR_TESTING=1 RELEASE_TESTING=1
 
