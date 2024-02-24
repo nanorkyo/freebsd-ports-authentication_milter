@@ -24,13 +24,15 @@ Now working following ports:
 - `devel/p5-Lock-File`: `make test` almost work, but not all, becase a lack of some ports.
 - `net-mgmt/p5-Prometheus-Tiny-Shared`: `make test` mostly work, but not all, becase a lack of some ports.
 - `net-mgmt/p5-Prometheus-Tiny`: `make test` not work, becase a lack of some ports.
+- `mail/p5-Mail-DMARC`:
+  - not support cron.d to update public suffix list.
 - `mail/p5-Mail-Milter-Authentication`:
   - not PREFIX clean.
   - not comfort a sample configuration file.
   - no pkg-messages for 1st setup.
     - sample for sendmail(unix domain socket).
-    - sample for postfix(inet socket, maybe ok).
-  - `make test` works well, but I've never actually used it so I don't know.
+    - sample for postfix(inet socket).
+  - `make test` works well, but I'm testing now.
 
 # DIRECTORIES
 - `/var/cache/authentication_milter`
