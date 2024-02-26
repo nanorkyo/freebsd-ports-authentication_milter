@@ -2,11 +2,8 @@ bin/authentication_milter
 bin/authentication_milter_blocker
 bin/authentication_milter_log
 bin/authentication_milter_client
-etc/mail/authentication_milter.json
-etc/mail/mail-dmarc.ini
-%%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/authentication_milter.json
-%%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/authentication_milter.init
-%%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/mail-dmarc.ini
+@sample %%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/authentication_milter.json %%ETCDIR%%/authentication_milter.json
+@sample %%SITE_PERL%%/auto/share/dist/Mail-Milter-Authentication/mail-dmarc.ini             %%ETCDIR%%/mail-dmarc.ini
 %%SITE_PERL%%/Mail/Milter/Authentication.pm
 %%SITE_PERL%%/Mail/Milter/Authentication/Resolver.pm
 %%SITE_PERL%%/Mail/Milter/Authentication/Client.pm

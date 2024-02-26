@@ -16,8 +16,10 @@
 #
 # authentication_milter_enable="YES"
 # authentication_milter_flags="<set as needed>"
-# authentication_milter_prefix="%%PREFIX%%/etc/mail"
+# authentication_milter_prefix="%%ETCDIR%%"
 # authentication_milter_foreground_enable="<default 'NO'>"
+# authentication_milter_user="%%DEFAULT_USER%%"
+# authentication_milter_group="%%DEFAULT_GROUP%%"
 #
 
 . /etc/rc.subr
@@ -28,10 +30,12 @@ rcvar="authentication_milter_enable"
 load_rc_config $name
 
 : ${authentication_milter_enable:=NO}
-: ${authentication_milter_prefix:=%%PREFIX%%/etc/mail}
+: ${authentication_milter_prefix:=%%ETCDIR%%}
 : ${authentication_milter_foreground_enable:=NO}
+: ${authentication_milter_user:=%%DEFAULT_USER%%}
+: ${authentication_milter_group:=%%DEFAULT_GROUP%%}
 
-pidfile="/var/run/${name}/${name}.pid"
+pidfile="%%RUNDIR%%/${name}.pid"
 procname="%%PREFIX%%/bin/authentication_milter"
 command_args="--pidfile ${pidfile} --prefix ${authentication_milter_prefix} ${authentication_milter_flags}"
 
@@ -61,7 +65,7 @@ authentication_milter_prestart () {
 
 	piddir=$(dirname "$pidfile")
 	if [ ! -d "$piddir" ]; then
-		install -d -o mailnull -g mailnull -m 0755 "$piddir"
+		install -d -o "$authentication_milter_user" -g "$authentication_milter_group" -m 0755 "$piddir"
 	fi
 }
 

@@ -51,18 +51,44 @@ USES=		perl5
 USE_PERL5=	configure
 USE_RC_SUBR=	authentication_milter
 
-TEST_ENV=	TEST_AUTHOR=1 AUTHOR_TESTING=1 RELEASE_TESTING=1
+TEST_ENV=	AUTHOR_TESTING=1 \
+		RELEASE_TESTING=1 \
+		TEST_AUTHOR=1
+
+CACHEDIR=	/var/cache/authentication_milter
+ETCDIR=		${PREFIX}/etc/mail
+LOGDIR=		/var/log
+RUNDIR=		/var/run/authentication_milter
+SPOOLDIR=	/var/spool/authentication_milter
+VARLIBDIR=	/var/lib/authentication_milter
+DEFAULT_USER=	mailnull
+DEFAULT_GROUP=	mailnull
 
 NO_ARCH=	yes
+SUB_LIST=	CACHEDIR=${CACHEDIR} \
+		LOGDIR=${LOGDIR} \
+		RUNDIR=${RUNDIR} \
+		SPOOLDIR=${SPOOLDIR} \
+		VARLIBDIR=${VARLIBDIR}
+SUB_LIST+=	DEFAULT_GROUP=${DEFAULT_GROUP} \
+		DEFAULT_USER=${DEFAULT_USER}
+
+post-extract:
+		${RM} ${WRKSRC}/share/authentication_milter.init
 
 post-patch:
-		${REINPLACE_CMD} "s|%%PREFIX%%|${PREFIX}|g" \
-			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Config.pm
-
-post-install:
-		${MKDIR} ${STAGEDIR}/${PREFIX}/etc/mail
-		${CP} ${WRKSRC}/share/authentication_milter.json \
-		      ${WRKSRC}/share/mail-dmarc.ini \
-			${STAGEDIR}/${PREFIX}/etc/mail/
+		${REINPLACE_CMD} \
+			-e "s|%%CACHEDIR%%|${CACHEDIR}|g" \
+			-e "s|%%ETCDIR%%|${ETCDIR}|g" \
+			-e "s|%%LOGDIR%%|${LOGDIR}|g" \
+			-e "s|%%PREFIX%%|${PREFIX}|g" \
+			-e "s|%%RUNDIR%%|${RUNDIR}|g" \
+			-e "s|%%SPOOLDIR%%|${SPOOLDIR}|g" \
+			-e "s|%%VARLIBDIR%%|${VARLIBDIR}|g" \
+			-e "s|%%DEFAULT_USER%%|${DEFAULT_USER}|g" \
+			-e "s|%%DEFAULT_GROUP%%|${DEFAULT_GROUP}|g" \
+			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Config.pm \
+			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Handler/DMARC.pm \
+			${PATCH_WRKSRC}/share/authentication_milter.json
 
 .include <bsd.port.mk>
