@@ -16,7 +16,11 @@ Now working following ports:
 - `portfmt` happy.
 - `portclippy` happy.
 - `poudorie testport mail/p5-Mail-Milter-Authentication` on FreeBSD/amd64 happy.
-- rc script ready.
+- `mail/p5-Mail-Milter-Authentication`:
+  - rc script ready.
+  - PREFIX clean.
+  - Comfort a sample configuration file.
+  - `make test` works well, and I confimed to works well in operation environment.
 
 # TODO
 - `*/*`: COMMENT and pkg-descr are not matched correctly.
@@ -27,12 +31,9 @@ Now working following ports:
 - `mail/p5-Mail-DMARC`:
   - not support cron.d to update public suffix list.
 - `mail/p5-Mail-Milter-Authentication`:
-  - not PREFIX clean.
-  - not comfort a sample configuration file.
   - no pkg-messages for 1st setup.
     - sample for sendmail(unix domain socket).
     - sample for postfix(inet socket).
-  - `make test` works well, but I'm testing now.
 
 # DIRECTORIES
 - `/var/cache/authentication_milter`
