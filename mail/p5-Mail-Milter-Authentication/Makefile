@@ -72,6 +72,7 @@ SUB_LIST=	CACHEDIR=${CACHEDIR} \
 		VARLIBDIR=${VARLIBDIR}
 SUB_LIST+=	DEFAULT_GROUP=${DEFAULT_GROUP} \
 		DEFAULT_USER=${DEFAULT_USER}
+PLIST_SUB=	${SUB_LIST}
 
 post-extract:
 		${RM} ${WRKSRC}/share/authentication_milter.init
@@ -90,5 +91,11 @@ post-patch:
 			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Config.pm \
 			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Handler/DMARC.pm \
 			${PATCH_WRKSRC}/share/authentication_milter.json
+
+post-install:
+		${MKDIR} ${STAGEDIR}${RUNDIR} \
+			 ${STAGEDIR}${CACHEDIR} \
+			 ${STAGEDIR}${SPOOLDIR} \
+			 ${STAGEDIR}${VARLIBDIR}
 
 .include <bsd.port.mk>
