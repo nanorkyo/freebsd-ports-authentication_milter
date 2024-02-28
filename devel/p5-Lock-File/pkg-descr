@@ -1,3 +1,0 @@
-The Lock::File module provides flock wrapper functions that watch the
-associated object and release it automatically if the object has no
-reference.
