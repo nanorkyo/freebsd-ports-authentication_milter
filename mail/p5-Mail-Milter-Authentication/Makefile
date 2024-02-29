@@ -65,6 +65,7 @@ DEFAULT_USER=	mailnull
 DEFAULT_GROUP=	mailnull
 
 NO_ARCH=	yes
+SUB_FILES=	pkg-message
 SUB_LIST=	CACHEDIR=${CACHEDIR} \
 		LOGDIR=${LOGDIR} \
 		RUNDIR=${RUNDIR} \
