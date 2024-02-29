@@ -19,12 +19,13 @@ RUN_DEPENDS=	p5-Devel-CallChecker>0:devel/p5-Devel-CallChecker \
 USES=		perl5
 USE_PERL5=	modbuild
 
-NO_ARCH=	yes
-
 PLIST_FILES=	${SITE_ARCH_REL}/auto/Hash/SharedMem/SharedMem.so \
 		${SITE_ARCH_REL}/Hash/SharedMem.pm \
 		${SITE_ARCH_REL}/Hash/SharedMem/Handle.pm \
 		${SITE_MAN3_REL}/Hash::SharedMem.3.gz \
 		${SITE_MAN3_REL}/Hash::SharedMem::Handle.3.gz
+
+post-install:
+		${STRIP_CMD} ${STAGEDIR}${SITE_ARCH}/auto/Hash/SharedMem/SharedMem.so
 
 .include <bsd.port.mk>
