@@ -3,12 +3,9 @@ This is a part of the FreeBSD Ports Collection for [authentication_milter](https
 Now working following ports:
 
 - `mail/p5-Mail-Milter-Authentication`
-  - `devel/p5-Lock-File`
   - `mail/p5-Mail-BIMI`
-    - `www/p5-HTTP-Tiny-Paranoid`
   - `mail/p5-Mail-DataFeed-Abusix`
   - `net-mgmt/p5-Prometheus-Tiny-Shared`
-    - `devel/p5-Hash-SharedMem`
     - `net-mgmt/p5-Prometheus-Tiny`
 
 # DONE
@@ -21,19 +18,19 @@ Now working following ports:
   - PREFIX clean.
   - Comfort a sample configuration file.
   - `make test` works well, and I confimed to works well in operation environment.
+  - pkg-message ready.
+- Feed back to ports done.
+  - `devel/p5-Lock-File`
+  - `devel/p5-Hash-SharedMem`
+  - `www/p5-HTTP-Tiny-Paranoid`
 
 # TODO
 - `*/*`: COMMENT and pkg-descr are not matched correctly.
 - `*/*`: I have not verified that the license is correct.
-- `devel/p5-Lock-File`: `make test` almost work, but not all, becase a lack of some ports.
 - `net-mgmt/p5-Prometheus-Tiny-Shared`: `make test` mostly work, but not all, becase a lack of some ports.
 - `net-mgmt/p5-Prometheus-Tiny`: `make test` not work, becase a lack of some ports.
 - `mail/p5-Mail-DMARC`:
   - not support cron.d to update public suffix list.
-- `mail/p5-Mail-Milter-Authentication`:
-  - no pkg-messages for 1st setup.
-    - sample for sendmail(unix domain socket).
-    - sample for postfix(inet socket).
 
 # DIRECTORIES
 - `/var/cache/authentication_milter`
