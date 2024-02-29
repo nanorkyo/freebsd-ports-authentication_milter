@@ -13,7 +13,6 @@ LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 RUN_DEPENDS=	p5-Class-Method-Modifiers>0:devel/p5-Class-Method-Modifiers \
-		p5-HTTP-Tiny>0:www/p5-HTTP-Tiny \
 		p5-Net-DNS-Paranoid>0:dns/p5-Net-DNS-Paranoid
 
 USES=		perl5
