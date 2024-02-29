@@ -26,6 +26,6 @@ PLIST_FILES=	${SITE_ARCH_REL}/auto/Hash/SharedMem/SharedMem.so \
 		${SITE_MAN3_REL}/Hash::SharedMem::Handle.3.gz
 
 post-install:
-		${STRIP_CMD} ${STAGEDIR}${SITE_ARCH}/auto/Hash/SharedMem/SharedMem.so
+		${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Hash/SharedMem/SharedMem.so
 
 .include <bsd.port.mk>
