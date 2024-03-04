@@ -29,7 +29,7 @@ USE_PERL5=	configure
 TEST_ENV=	# RELEASE_TESTING=1 #: release test not work #
 
 NO_ARCH=	yes
-NO_TEST=	yes # almost work, but there is a lack of some ports #
+NO_TEST=	yes # almost work, but not by a lack of some ports #
 
 PLIST_FILES=	${SITE_MAN3_REL}/Prometheus::Tiny::Shared.3.gz \
 		${SITE_PERL_REL}/Prometheus/Tiny/Shared.pm

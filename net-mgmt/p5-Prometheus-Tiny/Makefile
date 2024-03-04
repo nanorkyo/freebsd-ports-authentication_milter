@@ -20,7 +20,7 @@ USES=		perl5
 USE_PERL5=	configure
 
 NO_ARCH=	yes
-NO_TEST=	yes # not work in this time, there is a lack of some ports. #
+NO_TEST=	yes # not work by a lack of some ports #
 
 PLIST_FILES=	${SITE_MAN3_REL}/Prometheus::Tiny.3.gz \
 		${SITE_PERL_REL}/Prometheus/Tiny.pm
