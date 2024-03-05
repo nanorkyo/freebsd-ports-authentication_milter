@@ -130,3 +130,4 @@ bin/authentication_milter_client
 @dir(%%DEFAULT_USER%%,%%DEFAULT_GROUP%%,0750) %%CACHEDIR%%
 @dir(%%DEFAULT_USER%%,%%DEFAULT_GROUP%%,0750) %%SPOOLDIR%%
 @dir(%%DEFAULT_USER%%,%%DEFAULT_GROUP%%,0750) %%VARLIBDIR%%
+@dir %%ETCDIR%%/authentication_milter.d

@@ -11,8 +11,8 @@
 -    "umask"                  : "0000",
 -    "runas"                  : "nobody",
 -    "rungroup"               : "nogroup",
-+    "connection"             : "unix:%%RUNDIR%%/authentication_milter.socket",
-+    "umask"                  : "0027",
++    "connection"             : "unix:%%RUNDIR%%/auth_milter.sock",
++    "umask"                  : "0077",
 +    "runas"                  : "%%DEFAULT_USER%%",
 +    "rungroup"               : "%%DEFAULT_GROUP%%",
      "chroot"                 : "",
@@ -49,13 +49,13 @@
          },
  
          "DMARC" : {
+             "hide_none" : 0,
 +            "hard_reject" : 0,
 +            "no_reject_disposition" : "quarantine",
 +            "use_arc" : 1,
 +            "no_report" : 1,
-             "hide_none" : 0,
++            "config_file": "%%ETCDIR%%/mail-dmarc.ini",
              "detect_list_id" : "1"
-+            "config_file": "%%ETCDIR%%/mail-dmarc.ini"
          },
  
 +        "ARC" : {

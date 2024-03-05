@@ -21,7 +21,7 @@
 -        'umask'                           => '0000',
 -        'runas'                           => 'nobody',
 -        'rungroup'                        => 'nogroup',
-+        'connection'                      => 'unix:%%RUNDIR%%/authentication_milter.socket',
++        'connection'                      => 'unix:%%RUNDIR%%/auth_milter.sock',
 +        'umask'                           => '0077',
 +        'runas'                           => '%%DEFAULT_USER%%',
 +        'rungroup'                        => '%%DEFAULT_GROUP%%',
@@ -38,3 +38,34 @@
          'max_requests_per_child'          => 200,
          'protocol'                        => 'milter',
          'connect_timeout'                 => 30,
+@@ -61,9 +61,9 @@ sub default_config {
+         'ip_map'                          => {},
+         'authserv_id'                     => '',
+         'handlers'                        => {},
+-        'cache_dir'                       => '/var/cache/authentication_milter',
+-        'spool_dir'                       => '/var/spool/authentication_milter',
+-        'lib_dir'                         => '/var/lib/authentication_milter',
++        'cache_dir'                       => '%%CACHEDIR%%',
++        'spool_dir'                       => '%%SPOOLDIR%%',
++        'lib_dir'                         => '%%VARLIBDIR%%',
+         'lock_file'                       => '',
+     };
+ 
+@@ -104,7 +104,7 @@ sub setup_config {
+         else {
+             if ( $EUID == 0 ) {
+                 # We are root, create in global space
+-                $dir = '/var/'.$type.'/authentication_milter';
++                $dir = '/var/'.$type.'/auth_milter';
+                 mkdir $dir if ! -e $dir;
+                 # Create the subdir for this IDENT
+                 $dir .= '/'.$safe_ident;
+@@ -119,7 +119,7 @@ sub setup_config {
+             else {
+                 # We are a user! Create something in a temporary space
+                 $dir = join( '_',
+-                  '/tmp/authentication_milter',
++                  '/tmp/auth_milter',
+                   $type,
+                   $EUID,
+                   $safe_ident,

@@ -55,12 +55,12 @@ TEST_ENV=	AUTHOR_TESTING=1 \
 		RELEASE_TESTING=1 \
 		TEST_AUTHOR=1
 
-CACHEDIR=	/var/cache/authentication_milter
+CACHEDIR=	/var/cache/auth_milter
 ETCDIR=		${PREFIX}/etc/mail
 LOGDIR=		/var/log
-RUNDIR=		/var/run/authentication_milter
-SPOOLDIR=	/var/spool/authentication_milter
-VARLIBDIR=	/var/lib/authentication_milter
+RUNDIR=		/var/run/auth_milter
+SPOOLDIR=	/var/spool/auth_milter
+VARLIBDIR=	/var/lib/auth_milter
 DEFAULT_USER=	mailnull
 DEFAULT_GROUP=	mailnull
 
@@ -89,6 +89,7 @@ post-patch:
 			-e "s|%%VARLIBDIR%%|${VARLIBDIR}|g" \
 			-e "s|%%DEFAULT_USER%%|${DEFAULT_USER}|g" \
 			-e "s|%%DEFAULT_GROUP%%|${DEFAULT_GROUP}|g" \
+			${PATCH_WRKSRC}/bin/authentication_milter \
 			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Config.pm \
 			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Handler/DMARC.pm \
 			${PATCH_WRKSRC}/share/authentication_milter.json
@@ -97,6 +98,7 @@ post-install:
 		${MKDIR} ${STAGEDIR}${RUNDIR} \
 			 ${STAGEDIR}${CACHEDIR} \
 			 ${STAGEDIR}${SPOOLDIR} \
-			 ${STAGEDIR}${VARLIBDIR}
+			 ${STAGEDIR}${VARLIBDIR} \
+			 ${STAGEDIR}${ETCDIR}/authentication_milter.d
 
 .include <bsd.port.mk>
