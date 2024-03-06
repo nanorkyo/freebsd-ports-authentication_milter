@@ -31,11 +31,21 @@ Now working following ports:
   - not support cron.d to update public suffix list.
 
 # DIRECTORIES
-- `/var/cache/authentication_milter`
-- `/var/lib/authentication_milter`
-- `/var/spool/authentication_milter`
+- `/var/cache/auth_milter`
+- `/var/spool/auth_milter`
+- `/var/lib/auth_milter`
 - `/usr/local/etc/mail`
+- `/usr/local/etc/mail/authentication_milter.d`
 
 # CONFIGURATION
 - `PREFIX/etc/mail/authentication_milter.json`
 - `PREFIX/etc/mail/mail-dmarc.ini`
+- `PREFIX/etc/mail/authentication_milter.d/HANDLAR.json`
+
+Please see also, following command to get HANDLARs.
+```
+authentication_milter -h installed
+```
+
+# LOGFILE
+- `/var/log/authentication_milter.err`
