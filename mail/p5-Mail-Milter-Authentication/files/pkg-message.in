@@ -20,11 +20,11 @@ Check and/or modify the following configuration files to suit your needs:
 For sendmail users, please add the following line to your sendmail.mc:
 
     INPUT_MAIL_FILTER(`authentication-milter', \
-        `S=local:%%RUNDIR%%/authentication_milter.socket, F=T, T=R:2m')
+        `S=local:%%RUNDIR%%/auth_milter.sock, F=T, T=R:2m')
 
 For postfix users, please add the following line to your main.cf:
 
-    smtpd_milters = sock:%%RUNDIR%%/authentication_milter.socket
+    smtpd_milters = sock:%%RUNDIR%%/auth_milter.sock
 
     Note: milter sockets must be accessible from postfix/smtpd;
           using inet sockets might be preferred.
