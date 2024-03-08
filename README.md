@@ -4,8 +4,6 @@ Now working following ports:
 
 - `mail/p5-Mail-Milter-Authentication`
   - `mail/p5-Mail-BIMI`
-  - `mail/p5-Mail-DataFeed-Abusix`
-  - `net-mgmt/p5-Prometheus-Tiny-Shared`
 
 # DONE
 - `portlint` happy.
@@ -23,10 +21,10 @@ Now working following ports:
   - `devel/p5-Hash-SharedMem`
   - `www/p5-HTTP-Tiny-Paranoid`
   - `net-mgmt/p5-Prometheus-Tiny`
+  - `net-mgmt/p5-Prometheus-Tiny-Shared`
+  - `mail/p5-Mail-DataFeed-Abusix`
 
 # TODO
-- `*/*`: COMMENT and pkg-descr are not matched correctly.
-- `net-mgmt/p5-Prometheus-Tiny-Shared`: `make test` mostly work, but not all, becase a lack of some ports.
 - `mail/p5-Mail-DMARC`:
   - not support cron.d to update public suffix list.
 
