@@ -11,8 +11,7 @@ WWW=		https://metacpan.org/release/Prometheus-Tiny-Shared
 LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
-RUN_DEPENDS=	p5-File-Path>0:devel/p5-File-Path \
-		p5-Hash-SharedMem>0:devel/p5-Hash-SharedMem \
+RUN_DEPENDS=	p5-Hash-SharedMem>0:devel/p5-Hash-SharedMem \
 		p5-JSON-XS>0:converters/p5-JSON-XS \
 		p5-Prometheus-Tiny>=0.011:net-mgmt/p5-Prometheus-Tiny
 TEST_DEPENDS=	p5-Data-Random>0:devel/p5-Data-Random \
