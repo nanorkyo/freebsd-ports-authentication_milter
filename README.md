@@ -3,7 +3,6 @@ This is a part of the FreeBSD Ports Collection for [authentication_milter](https
 Now working following ports:
 
 - `mail/p5-Mail-Milter-Authentication`
-  - `mail/p5-Mail-BIMI`
 
 # DONE
 - `portlint` happy.
@@ -23,6 +22,7 @@ Now working following ports:
   - `net-mgmt/p5-Prometheus-Tiny`
   - `net-mgmt/p5-Prometheus-Tiny-Shared`
   - `mail/p5-Mail-DataFeed-Abusix`
+  - `mail/p5-Mail-BIMI`
 
 # TODO
 - `mail/p5-Mail-DMARC`:
