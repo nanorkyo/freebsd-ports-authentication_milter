@@ -47,58 +47,48 @@ TEST_DEPENDS=	p5-Crypt-OpenSSL-RSA>0:security/p5-Crypt-OpenSSL-RSA \
 		p5-Test-Exception>0:devel/p5-Test-Exception \
 		p5-Test-Perl-Critic>0:textproc/p5-Test-Perl-Critic
 
-USES=		perl5
+USES=		perl5 shebangfix
 USE_PERL5=	configure
 USE_RC_SUBR=	authentication_milter
+SHEBANG_FILES=	bin/authentication_milter bin/authentication_milter_blocker \
+		bin/authentication_milter_client bin/authentication_milter_log
 
 TEST_ENV=	AUTHOR_TESTING=1 \
 		RELEASE_TESTING=1 \
 		TEST_AUTHOR=1
 
+ETCDIR=			${PREFIX}/etc/mail
+EXTRACT_AFTER_ARGS=	--exclude ./share/authentication_milter.init \
+			--no-same-owner --no-same-permission
+.for V in CACHEDIR ETCDIR RUNDIR SPOOLDIR VARLIBDIR VARLIBDIRBASE \
+	DEFAULT_USER DEFAULT_GROUP
+REINPLACE_LIST+=	-e "s|%%${V}%%|${$V}|g"
+.endfor
+NO_ARCH=		yes
+SUB_FILES=		pkg-message
+.for V in CACHEDIR ETCDIR RUNDIR SPOOLDIR VARLIBDIR VARLIBDIRBASE \
+	DEFAULT_USER DEFAULT_GROUP
+SUB_LIST+=		${V}=${$V}
+.endfor
+
+PLIST_SUB=	${SUB_LIST}
+
 CACHEDIR=	/var/cache/auth_milter
-ETCDIR=		${PREFIX}/etc/mail
-LOGDIR=		/var/log
+DEFAULT_GROUP=	mailnull
+DEFAULT_USER=	mailnull
 RUNDIR=		/var/run/auth_milter
 SPOOLDIR=	/var/spool/auth_milter
 VARLIBDIR=	/var/lib/auth_milter
-DEFAULT_USER=	mailnull
-DEFAULT_GROUP=	mailnull
-
-NO_ARCH=	yes
-SUB_FILES=	pkg-message
-SUB_LIST=	CACHEDIR=${CACHEDIR} \
-		LOGDIR=${LOGDIR} \
-		RUNDIR=${RUNDIR} \
-		SPOOLDIR=${SPOOLDIR} \
-		VARLIBDIR=${VARLIBDIR}
-SUB_LIST+=	DEFAULT_GROUP=${DEFAULT_GROUP} \
-		DEFAULT_USER=${DEFAULT_USER}
-PLIST_SUB=	${SUB_LIST}
-
-post-extract:
-		${RM} ${WRKSRC}/share/authentication_milter.init
+VARLIBDIRBASE=	/var/lib
 
 post-patch:
-		${REINPLACE_CMD} \
-			-e "s|%%CACHEDIR%%|${CACHEDIR}|g" \
-			-e "s|%%ETCDIR%%|${ETCDIR}|g" \
-			-e "s|%%LOGDIR%%|${LOGDIR}|g" \
-			-e "s|%%PREFIX%%|${PREFIX}|g" \
-			-e "s|%%RUNDIR%%|${RUNDIR}|g" \
-			-e "s|%%SPOOLDIR%%|${SPOOLDIR}|g" \
-			-e "s|%%VARLIBDIR%%|${VARLIBDIR}|g" \
-			-e "s|%%DEFAULT_USER%%|${DEFAULT_USER}|g" \
-			-e "s|%%DEFAULT_GROUP%%|${DEFAULT_GROUP}|g" \
-			${PATCH_WRKSRC}/bin/authentication_milter \
-			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Config.pm \
-			${PATCH_WRKSRC}/lib/Mail/Milter/Authentication/Handler/DMARC.pm \
-			${PATCH_WRKSRC}/share/authentication_milter.json
+		cd ${PATCH_WRKSRC} && ${REINPLACE_CMD} ${REINPLACE_LIST} \
+		    bin/authentication_milter \
+		    lib/Mail/Milter/Authentication/Config.pm \
+		    lib/Mail/Milter/Authentication/Handler/DMARC.pm \
+		    share/authentication_milter.json
 
 post-install:
-		${MKDIR} ${STAGEDIR}${RUNDIR} \
-			 ${STAGEDIR}${CACHEDIR} \
-			 ${STAGEDIR}${SPOOLDIR} \
-			 ${STAGEDIR}${VARLIBDIR} \
-			 ${STAGEDIR}${ETCDIR}/authentication_milter.d
+		${MKDIR} ${STAGEDIR}${ETCDIR}/authentication_milter.d
 
 .include <bsd.port.mk>

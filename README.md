@@ -15,6 +15,7 @@ Now working following ports:
   - Comfort a sample configuration file.
   - `make test` works well, and I confimed to works well in operation environment.
   - pkg-message ready.
+  - log directory clean by using syslog.
 - Feed back to ports done.
   - `devel/p5-Lock-File`
   - `devel/p5-Hash-SharedMem`
@@ -32,18 +33,22 @@ Now working following ports:
 - `/var/cache/auth_milter`
 - `/var/spool/auth_milter`
 - `/var/lib/auth_milter`
+- `/var/run/auth_milter`
 - `/usr/local/etc/mail`
 - `/usr/local/etc/mail/authentication_milter.d`
 
 # CONFIGURATION
 - `PREFIX/etc/mail/authentication_milter.json`
 - `PREFIX/etc/mail/mail-dmarc.ini`
-- `PREFIX/etc/mail/authentication_milter.d/HANDLAR.json`
+- `PREFIX/etc/mail/authentication_milter.d/HANDLAR.json` [*]
 
-Please see also, following command to get HANDLARs.
+[*] Please see also, following command to get HANDLARs.
 ```
 authentication_milter -h installed
 ```
 
 # LOGFILE
-- `/var/log/authentication_milter.err`
+- `/var/log/maillog`
+
+# SPECIAL THANKS
+- Hiroki Sato <hrs@FreeBSD.org>
