@@ -1,8 +1,10 @@
 This is a part of the FreeBSD Ports Collection for [authentication_milter](https://metacpan.org/dist/Mail-Milter-Authentication).
 
-Now working following ports:
+# HOW TO INSTALL
 
-- `mail/p5-Mail-Milter-Authentication`
+```
+pkg install p5-Mail-Milter-Authentication
+```
 
 # DONE
 - `portlint` happy.
@@ -24,6 +26,7 @@ Now working following ports:
   - `net-mgmt/p5-Prometheus-Tiny-Shared`
   - `mail/p5-Mail-DataFeed-Abusix`
   - `mail/p5-Mail-BIMI`
+  - `mail/p5-Mail-Milter-Authentication`
 
 # TODO
 - `mail/p5-Mail-DMARC`:
